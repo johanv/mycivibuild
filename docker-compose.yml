@@ -1,0 +1,24 @@
+version: '2'
+services:
+  web:
+    build: .docker/web
+    ports:
+      - "80:80"
+    volumes:
+      - ./dmaster:/opt/buildkit/build/dmaster
+    environment:
+      XDEBUG_CONFIG: remote_host=172.19.0.1
+  db:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=blablablaroot
+      - MYSQL_DATABASE=drupal
+      - MYSQL_CIVI_DB=civi
+      - MYSQL_USER=dev
+      - MYSQL_PASSWORD=DbDevPw
+  buildkit:
+    build: .docker/buildkit
+    volumes:
+      - ./setup:/opt/setup:Z
+    volumes_from:
+      - web
