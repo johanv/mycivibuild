@@ -4,10 +4,10 @@ services:
     build: .docker/web
     ports:
       - "80:80"
-    volumes:
-      - ./dmaster:/opt/buildkit/build/dmaster
     environment:
       XDEBUG_CONFIG: remote_host=172.19.0.1
+    volumes:
+      - ./build/dmaster:/var/www/html:z
   db:
     image: mariadb
     environment:
@@ -19,6 +19,4 @@ services:
   buildkit:
     build: .docker/buildkit
     volumes:
-      - ./setup:/opt/setup:Z
-    volumes_from:
-      - web
+      - ./build:/opt/buildkit/build:z
