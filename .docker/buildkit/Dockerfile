@@ -10,8 +10,12 @@ RUN apt-get update \
 
 RUN groupadd civi \
   && useradd -g civi -m civi \
-  && chown -R civi:www-data /opt/buildkit \
+  && chown -R civi /opt/buildkit \
   && chmod -R ug+rwX /opt/buildkit
+
+RUN mkdir -p /var/www/html \
+  && chown -R civi:www-data /var/www \
+  && chmod -R ug+rwX /var/www
 
 RUN echo "[client] \n\
 user=root \n\

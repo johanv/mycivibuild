@@ -16,10 +16,14 @@ requests :-)
 Disable anly local webserver running at port 80, and issue these commands:
 
     # create directories for local build and local extensions
-    mkdir build
+    mkdir -p build/html
     mkdir extensions
-    sudo docker-compose up
-    sudo docker-compose run -u civi buildkit civibuild create dmaster
+    sudo docker-compose up -d
+    sudo docker-compose run -u civi buildkit civibuild create dmaster --web-root /var/www/html --url http://localhost
+    sudo docker-compose run buildkit chown -R www-data:www-data /var/www/html
+    sudo docker-compose chmod -R ug+rwX /var/www/html/sites/default/files
+
+(add `--force` to the civibuild command if it does not work.)
 
 You can now access your civicrm instance at http://localhost. The source files are
 available under the 'build' directory.
