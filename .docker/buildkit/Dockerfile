@@ -18,5 +18,7 @@ user=root \n\
 password=blablablaroot \n\
 host=db " > /home/civi/.my.cnf
 
+RUN su -c "/opt/buildkit/bin/amp config:set --db_type=mysql_mycnf --hosts_type=none --perm_type=worldWritable" civi
 
 ENV PATH /opt/buildkit/bin:$PATH
+
