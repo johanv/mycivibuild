@@ -5,7 +5,7 @@ services:
     ports:
       - "80:80"
     environment:
-      XDEBUG_CONFIG: remote_host=172.19.0.1
+      XDEBUG_CONFIG: remote_host=172.23.0.1
     volumes:
       - ./build:/var/www:z
       - ./extensions:/var/www/html/sites/default/files/civicrm/ext:z

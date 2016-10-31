@@ -32,7 +32,7 @@ available under the 'build' directory.
 
 Create an alias for drush:
 
-    alias drush='sudo docker-compose run buildkit drush --root=/opt/buildkit/build/dmaster'
+    alias drush='sudo docker-compose run buildkit drush --root=/var/www/html'
 
 Now you can create a one time login link for user 1:
 
