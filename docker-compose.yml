@@ -8,7 +8,7 @@ services:
       XDEBUG_CONFIG: remote_host=172.19.0.1
     volumes:
       - ./build:/var/www:z
-      - ./extensions:/var/www/html/sites/default/files/civicrm/ext:z
+#      - ./extensions:/var/www/html/sites/default/files/civicrm/ext:z
   db:
     image: mariadb
     environment:
@@ -17,8 +17,3 @@ services:
       - MYSQL_CIVI_DB=civi
       - MYSQL_USER=dev
       - MYSQL_PASSWORD=DbDevPw
-  buildkit:
-    build: .docker/buildkit
-    volumes:
-      - ./build:/var/www:z
-

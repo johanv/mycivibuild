@@ -19,9 +19,9 @@ Disable anly local webserver running at port 80, and issue these commands:
     mkdir -p build/html
     mkdir extensions
     sudo docker-compose up -d
-    sudo docker-compose run -u civi buildkit civibuild create dmaster --web-root /var/www/html --url http://localhost
-    sudo docker-compose run buildkit chown -R www-data:www-data /var/www/html
-    sudo docker-compose chmod -R ug+rwX /var/www/html/sites/default/files
+    sudo docker-compose exec web chown -R civi:www-data /var/www/html
+    sudo docker-compose exec web chmod -R ug+rwX /var/www/html/sites/default/files
+    sudo docker-compose exec --user civi web civibuild create dmaster --web-root /var/www/html --url http://localhost
 
 (add `--force` to the civibuild command if it does not work.)
 
@@ -32,7 +32,7 @@ available under the 'build' directory.
 
 Create an alias for drush:
 
-    alias drush='sudo docker-compose run buildkit drush --root=/opt/buildkit/build/dmaster'
+    alias drush='sudo docker-compose exec --user civi web drush --root=/var/www/html'
 
 Now you can create a one time login link for user 1:
 
