@@ -7,11 +7,11 @@ CiviCRM development on Drupal.
 
 * disable any local webserver on port 80
 * run `sudo docker-compose up`
-* run `sudo docker-compose run buildkit amp config`
-    * use .my.cnf for mysql configuration
-    * use world writeable for permissions (it is dev, it won't hurt)
-    * choose none everytime something is asked about web server configuration
-* run `sudo docker-compose run buildkit civibuild create dmaster --force`
+* run `sudo docker-compose run -u civi buildkit amp config`
+    * use .my.cnf (mysql_mycnf) for mysql configuration
+    * use world writeable (4) for permissions (it is dev, it won't hurt)
+    * choose none for hosts_type and httpd_type.
+* run `sudo docker-compose run -u civi buildkit civibuild create dmaster --force`
 
 You can now access your civicrm instance at http://localhost
 

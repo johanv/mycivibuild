@@ -8,11 +8,15 @@ RUN apt-get update \
   && git clone https://github.com/civicrm/civicrm-buildkit.git /opt/buildkit \
   && cd /opt/buildkit && ./bin/civi-download-tools
 
+RUN groupadd civi \
+  && useradd -g civi -m civi \
+  && chown -R civi:www-data /opt/buildkit \
+  && chmod -R ug+rwX /opt/buildkit
+
 RUN echo "[client] \n\
 user=root \n\
 password=blablablaroot \n\
-host=db " > /root/.my.cnf
+host=db " > /home/civi/.my.cnf
 
-RUN apt-get install sudo
 
 ENV PATH /opt/buildkit/bin:$PATH
