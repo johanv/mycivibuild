@@ -21,7 +21,8 @@ Disable anly local webserver running at port 80, and issue these commands:
     sudo docker-compose up -d
     sudo docker-compose run -u civi buildkit civibuild create dmaster --web-root /var/www/html --url http://localhost
     sudo docker-compose run buildkit chown -R www-data:www-data /var/www/html
-    sudo docker-compose chmod -R ug+rwX /var/www/html/sites/default/files
+    sudo docker-compose run buildkit chmod -R ug+rwX /var/www/html/sites/default/files
+    sudo docker-compose run buildkit drush --root=/var/www/html vset clean_url 0
 
 (add `--force` to the civibuild command if it does not work.)
 
