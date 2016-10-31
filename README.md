@@ -3,11 +3,23 @@
 Me, just trying to get a development environment for upstream
 CiviCRM development on Drupal.
 
+This is yet another docker image for civirm-buildkit.
+progressivetech has a similar project:
+[docker-civicrm-buildkit](https://github.com/progressivetech/docker-civicrm-buildkit).
+It might be better than mine, I did not look at this.
+
+Disclaimer: I am a docker noob. But I welcome feedback and pull
+requests :-)
+
 ## How to run
 
-* disable any local webserver on port 80
-* run `sudo docker-compose up`
-* run `sudo docker-compose run -u civi buildkit civibuild create dmaster --force`
+Disable anly local webserver running at port 80, and issue these commands:
+
+    # create directories for local build and local extensions
+    mkdir build
+    mkdir extensions
+    sudo docker-compose up
+    sudo docker-compose run -u civi buildkit civibuild create dmaster
 
 You can now access your civicrm instance at http://localhost. The source files are
 available under the 'build' directory.
@@ -20,6 +32,8 @@ Create an alias for drush:
 
 Now you can create a one time login link for user 1:
 
+    drush uli --uri=http://localhost
+    
 ## Remarks
 
 If the buildkit image does not build, because some debian package does not

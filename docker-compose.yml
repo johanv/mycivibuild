@@ -8,6 +8,7 @@ services:
       XDEBUG_CONFIG: remote_host=172.19.0.1
     volumes:
       - ./build/dmaster:/var/www/html:z
+      - ./extensions:/var/www/html/sites/default/files/civicrm/ext:z
   db:
     image: mariadb
     environment:
@@ -20,3 +21,4 @@ services:
     build: .docker/buildkit
     volumes:
       - ./build:/opt/buildkit/build:z
+      - ./extensions:/opt/buildkit/build/dmaster/sites/default/files/civicrm/ext:z
