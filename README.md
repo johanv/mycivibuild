@@ -20,7 +20,7 @@ Disable anly local webserver running at port 80, and issue these commands:
     mkdir extensions
     sudo docker-compose up -d
     sudo docker-compose run -u civi buildkit civibuild create dmaster --web-root /var/www/html --url http://localhost
-    sudo docker-compose run buildkit chown -R www-data:www-data /var/www/html
+    sudo docker-compose run buildkit chown -R civi:www-data /var/www/html
     sudo docker-compose run buildkit chmod -R ug+rwX /var/www/html/sites/default/files
     sudo docker-compose run -u civi buildkit drush --root=/var/www/html vset clean_url 0
 
@@ -39,7 +39,7 @@ Now you can create a one time login link for user 1:
 
     drush uli --uri=http://localhost
     
-## Remarks
+## Extensions
 
-If the buildkit image does not build, because some debian package does not
-download, try connecting via another ISP.
+Put the extensions you want to use/test in the 'extensions' subdirectory. Your CiviCRM
+instance should be able to find them.
