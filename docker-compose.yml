@@ -21,4 +21,5 @@ services:
     build: .docker/buildkit
     volumes:
       - ./build:/var/www:z
+      - ./extensions:/var/www/html/sites/default/files/civicrm/ext:z
 
