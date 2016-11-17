@@ -17,7 +17,6 @@ Disable anly local webserver running at port 80, and issue these commands:
 
     # create directories for local build and local extensions
     mkdir -p build/html
-    mkdir extensions
     sudo docker-compose up -d
     sudo docker-compose run -u civi buildkit civibuild create dmaster --web-root /var/www/html --url http://localhost
     sudo docker-compose run buildkit chown -R civi:www-data /var/www/html
@@ -39,7 +38,3 @@ Now you can create a one time login link for user 1:
 
     drush uli --uri=http://localhost
     
-## Extensions
-
-Put the extensions you want to use/test in the 'extensions' subdirectory. Your CiviCRM
-instance should be able to find them.
