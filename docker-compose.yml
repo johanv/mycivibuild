@@ -20,4 +20,6 @@ services:
     build: .docker/buildkit
     volumes_from:
       - web
+    stdin_open: true
+    tty: true
 
