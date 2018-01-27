@@ -1,8 +1,8 @@
-FROM php:cli
+FROM php:7.1-cli
 MAINTAINER johan.vervloet@chiro.be
 
 RUN apt-get update \
-  && apt-get install -yq mysql-client libxml2-dev libmcrypt-dev libpng12-dev git unzip zip \
+  && apt-get install -yq mysql-client libxml2-dev libmcrypt-dev libpng-dev git unzip zip \
   && docker-php-ext-install xml mcrypt gd pdo pdo_mysql mysqli mbstring \
   && git clone https://github.com/civicrm/civicrm-buildkit.git /opt/buildkit
 
@@ -24,7 +24,11 @@ RUN groupadd civi \
 user=root \n\
 password=blablablaroot \n\
 host=db " > /home/civi/.my.cnf \
-  && su -c "/opt/buildkit/bin/amp config:set --db_type=mysql_mycnf --hosts_type=none --perm_type=worldWritable" civi
+  && su -c "/opt/buildkit/bin/amp config:set --db_type=mysql_mycnf --hosts_type=none --perm_type=worldWritable" civi \
+  && cp /home/civi/.my.cnf /root
+
+RUN apt-get install -yq wget
+RUN docker-php-ext-install zip
 
 ENV PATH /opt/buildkit/bin:$PATH
 
