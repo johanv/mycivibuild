@@ -1,12 +1,10 @@
 # MyCiviBuild
 
+This project is discontinued. 
+Please use [civicrm-buildkit-docker](https://github.com/michaelmcandrew/civicrm-buildkit-docker) instead.
+
 Me, just trying to get a development environment for upstream
 CiviCRM development on Drupal.
-
-This is yet another docker image for civirm-buildkit.
-progressivetech has a similar project:
-[docker-civicrm-buildkit](https://github.com/progressivetech/docker-civicrm-buildkit).
-It might be better than mine, I did not look at this.
 
 Disclaimer: I am a docker noob. But I welcome feedback and pull
 requests :-)
